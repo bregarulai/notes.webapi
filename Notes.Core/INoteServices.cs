@@ -11,5 +11,6 @@ namespace Notes.Core
         Note GetNote(int id);
         List<Note> GetNotes();
         void DeleteNote(int id);
+        void EditNote(Note note);
     }
 }

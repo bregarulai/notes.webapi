@@ -32,6 +32,16 @@ namespace Notes.Core
             }
         }
 
+        public void EditNote(Note note)
+        {
+            var editNote = _context.Notes.FirstOrDefault(e => e.Id == note.Id);
+            if(editNote != null)
+            {
+                editNote.Value = note.Value;
+                _context.SaveChanges();
+            }
+        }
+
         public Note GetNote(int id)
         {
             return _context.Notes.FirstOrDefault(e => e.Id == id);

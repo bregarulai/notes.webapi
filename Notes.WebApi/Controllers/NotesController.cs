@@ -49,5 +49,12 @@ namespace Notes.WebApi.Controllers
             _notesServices.DeleteNote(id);
             return Ok();
         }
+
+        [HttpPut]
+        public IActionResult EditNote([FromBody] Note note)
+        {
+            _notesServices.EditNote(note);
+            return Ok();
+        }
     }
 }
