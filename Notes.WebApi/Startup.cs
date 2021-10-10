@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Notes.Db;
+using Notes.Core;
 
 namespace Notes.WebApi
 {
@@ -31,6 +32,7 @@ namespace Notes.WebApi
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("NotesContext")));
+            services.AddTransient<INoteServices, NotesServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
