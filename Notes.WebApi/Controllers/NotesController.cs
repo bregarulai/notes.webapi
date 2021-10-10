@@ -23,6 +23,7 @@ namespace Notes.WebApi.Controllers
         [HttpGet]
         public IActionResult GetNotes()
         {
+            _logger.LogInformation("Returned all notes");
             return Ok(_notesServices.GetNotes());
         }
 
@@ -39,6 +40,14 @@ namespace Notes.WebApi.Controllers
             var newNote = _notesServices.CreateNote(note);
             _logger.LogInformation("Note created");
             return CreatedAtRoute("GetNote", new { newNote.Id }, newNote);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteNote(int id)
+        {
+            _logger.LogInformation("Note deleted");
+            _notesServices.DeleteNote(id);
+            return Ok();
         }
     }
 }

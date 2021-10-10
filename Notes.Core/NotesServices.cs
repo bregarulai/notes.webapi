@@ -22,6 +22,16 @@ namespace Notes.Core
             return note;
         }
 
+        public void DeleteNote(int id)
+        {
+            var note = _context.Notes.FirstOrDefault(e => e.Id == id);
+            if(note != null)
+            {
+                _context.Notes.Remove(note);
+                _context.SaveChanges();
+            }
+        }
+
         public Note GetNote(int id)
         {
             return _context.Notes.FirstOrDefault(e => e.Id == id);
