@@ -1,5 +1,6 @@
 ﻿using Notes.Db;
 using System;
+using System.Linq;
 
 namespace Notes.Core
 {
@@ -18,6 +19,11 @@ namespace Notes.Core
             _context.SaveChanges();
 
             return note;
+        }
+
+        public Note GetNote(int id)
+        {
+            return _context.Notes.FirstOrDefault(e => e.Id == id);
         }
     }
 }

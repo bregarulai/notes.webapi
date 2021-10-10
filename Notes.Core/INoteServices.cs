@@ -8,5 +8,6 @@ namespace Notes.Core
     public interface INoteServices
     {
         Note CreateNote(Note note);
+        Note GetNote(int id);
     }
 }
