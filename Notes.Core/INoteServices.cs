@@ -9,5 +9,6 @@ namespace Notes.Core
     {
         Note CreateNote(Note note);
         Note GetNote(int id);
+        List<Note> GetNotes();
     }
 }

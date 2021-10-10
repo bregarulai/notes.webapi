@@ -20,7 +20,13 @@ namespace Notes.WebApi.Controllers
             _notesServices = notesServices;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        public IActionResult GetNotes()
+        {
+            return Ok(_notesServices.GetNotes());
+        }
+
+        [HttpGet("{id}", Name = "GetNote")]
         public IActionResult GetNote(int id)
         {
             _logger.LogInformation("Note returned");
@@ -30,8 +36,9 @@ namespace Notes.WebApi.Controllers
         [HttpPost]
         public IActionResult CreateNote(Note note)
         {
+            var newNote = _notesServices.CreateNote(note);
             _logger.LogInformation("Note created");
-            return Ok(_notesServices.CreateNote(note));
+            return CreatedAtRoute("GetNote", new { newNote.Id }, newNote);
         }
     }
 }
